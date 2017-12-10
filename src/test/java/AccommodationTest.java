@@ -21,23 +21,23 @@ public class AccommodationTest {
 
     @Test
     public void canSeeOccupancy() {
-        assertEquals(0, bedroom1.checkOccupants());
+        assertEquals(0, bedroom1.checkNumberOfOccupants());
     }
 
     @Test
     public void canCheckInOccupant() {
         bedroom1.checkInGuestDirect(guest1);
-        assertEquals(1, bedroom1.checkOccupants());
+        assertEquals(1, bedroom1.checkNumberOfOccupants());
     }
 
     @Test
     public void accommodationHasCharge(){
-        assertEquals(AccommodationType.cost(), bedroom1.getCharge());
+        assertEquals(40.00, bedroom1.getCharge(),0.01);
     }
 
     @Test
     public void accommodationHasCapacity(){
-        assertEquals(10, java.util.Optional.ofNullable(bedroom1.getCapacity()));
+        assertEquals(2, bedroom1.getCapacity(),1);
     }
 
 }

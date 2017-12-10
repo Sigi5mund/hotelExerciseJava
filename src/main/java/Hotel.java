@@ -27,13 +27,16 @@ public class Hotel {
         return till;
     }
 
-
     public ArrayList<Guest> getGuests() {
         return guests;
     }
 
     public void addGuest(Guest guest) {
         this.guests.add(guest);
+    }
+
+    public int findguests(){
+        return guests.size();
     }
 
     public ArrayList<Room> getRooms() {
@@ -45,19 +48,19 @@ public class Hotel {
     }
 
     public String getRestaurant() {
-        return String.valueOf(restaurant.designation);
+        return String.valueOf(restaurant.name);
     }
 
 
     public boolean checkIfRoomFullBedroom(Accommodation bedroom){
-        if(bedroom.checkOccupants() < AccommodationType.capacity()){
+        if(bedroom.checkNumberOfOccupants() < bedroom.getCapacity()){
             return true;}
         else {
             return false; }
     }
 
     public boolean checkIfRoomFullConference(Conference conference){
-        if(conference.checkOccupants() < ConferenceType.capacity()){
+        if(conference.checkNumberOfOccupants() < conference.getCapacity()){
             return true;}
         else {
             return false; }
@@ -75,4 +78,10 @@ public class Hotel {
         if (checkIfRoomFullConference(conference) == true)
         {conference.occupants.add(guest);}
     }
+
+//    public ArrayList<Room> emptyRooms(){
+//        return ArrayLis;
+//    }
+
+
 }

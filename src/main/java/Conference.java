@@ -1,29 +1,34 @@
 
 public class Conference extends Room {
 
+    double charge;
+    int capacity;
+    String name;
 
 
-
-    Double charge;
-    Integer capacity;
-
-
-    public Conference(String designation, ConferenceType type, Location location ) {
-        super(designation, type, location);
-        this.charge = ConferenceType.cost();
-        this.capacity= ConferenceType.capacity();
+    public Conference(String name, ConferenceType type, Location location ) {
+        super(type, location);
+        this.name = name;
+        capacity = type.capacity();
+        charge = type.cost();
     }
 
-    public String prettyPrintName() {
-        return "The "+ designation + "room on floor"+ location;
+
+
+    public String getFloorName (Conference conroom){
+        return conroom.location.getId();
     }
 
-    public Integer getCapacity() {
+    public String prettyPrintName(Conference conroom) {
+        return "The "+ name + "room on floor"+ getFloorName(conroom);
+    }
+
+    public int getCapacity() {
         return this.capacity;
     }
 
-    public Double getCharge() {
-        return charge;
+    public double getCharge() {
+        return this.charge;
     }
 
 }

@@ -20,24 +20,23 @@ public class ConferenceTest {
 
     @Test
     public void canSeeOccupancy() {
-        assertEquals(0, room1.checkOccupants());
+        assertEquals(0, room1.checkNumberOfOccupants());
     }
 
     @Test
     public void canCheckInOccupant() {
         room1.checkInGuestDirect(guest1);
-        assertEquals(1, room1.checkOccupants());
+        assertEquals(1, room1.checkNumberOfOccupants());
     }
 
     @Test
-    public void accommodationHasCharge(){
-        assertEquals(ConferenceType.cost(), room1.getCharge());
+    public void conferenceHasCharge(){
+        assertEquals(250.00, room1.getCharge(), 0.01);
     }
 
     @Test
-    public void accommodationHasCapacity(){
-
-        assertEquals(10, java.util.Optional.ofNullable(room1.getCapacity()));
+    public void conferenceHasCapacity(){
+        assertEquals(10, room1.getCapacity(), 1);
     }
 
 

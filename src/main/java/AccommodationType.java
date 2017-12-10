@@ -1,24 +1,25 @@
 public enum AccommodationType {
 
 
-
     SINGLE(1, 20.00),
     DOUBLE(2, 40.00),
     FAMILY(4, 70.00);
 
 
-    private static Integer capacity;
-    private static Double cost;
+    public final int capacity;
+    public final double cost;
 
 
-    AccommodationType(Integer i, Double v) {
+    AccommodationType( int capacity, double cost) {
+        this.capacity = capacity;
+        this.cost = cost;
     }
 
-    public static Integer capacity(){
+    public int capacity(){
         return capacity;
     }
 
-    public static Double cost(){
+    public double cost(){
         return cost;
     }
 

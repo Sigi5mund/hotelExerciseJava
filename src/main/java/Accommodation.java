@@ -1,32 +1,35 @@
 
-
 public class Accommodation extends Room{
 
-    Integer capacity;
-    Double charge;
+    int capacity;
+    double charge;
+    Integer name;
 
-    public Accommodation(Integer designation, AccommodationType type, Location location) {
-        super(designation, type, location);
-        this.charge = AccommodationType.cost();
-        this.capacity= AccommodationType.capacity();
+
+    public Accommodation(Integer name, AccommodationType type, Location location) {
+        super(type, location);
+        this.name = name;
+        this.capacity = type.capacity();
+        this.charge = type.cost();
     }
 
 
-    public String getFloorName (Accommodation room){
-        return (Location.getId());
-    }
-    public String prettyPrintName(Accommodation room) {
-        return getFloorName(room) + room.designation;
-    }
 
-
-    public Integer getCapacity() {
-        return capacity;
+    public String getFloorName (Accommodation bedroom){
+        return bedroom.location.getId();
+    }
+    public String prettyPrintName(Accommodation bedroom) {
+        return getFloorName(bedroom) + bedroom.name;
     }
 
 
-    public Double getCharge() {
-        return charge;
+    public int getCapacity() {
+        return this.capacity;
+    }
+
+
+    public double getCharge() {
+        return this.charge;
     }
 
 

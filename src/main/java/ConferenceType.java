@@ -5,17 +5,21 @@ public enum ConferenceType {
     WEDDING(50, 5000.00),
     MEETING(10, 250.00);
 
-    public static Integer capacity;
-    public static Double cost;
 
-    ConferenceType(Integer i, Double v) {
+    public final int capacity;
+    public final double cost;
+
+
+    ConferenceType( int capacity, double cost) {
+        this.capacity = capacity;
+        this.cost = cost;
     }
 
-    public static Integer capacity(){
+    public Integer capacity() {
         return capacity;
     }
 
-    public static Double cost(){
+    public Double cost(){
         return cost;
     }
 

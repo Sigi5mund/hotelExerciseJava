@@ -1,51 +1,32 @@
 import java.util.ArrayList;
 
-public class Room<D, T> {
+public class Room <D> {
 
 
-    D designation;
-    Enum location;
-    T type;
+    String name;
+    Location location;
+    D type;
     ArrayList<Guest> occupants;
 
 
-    public Room(D designation, T type, Enum location) {
-        this.designation = designation;
+    public Room(D type, Location location) {
         this.type = type;
         this.location = location;
         this.occupants = new ArrayList<>();
         }
 
 
-    public D getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(D designation) {
-        this.designation = designation;
-    }
-
     public Enum getLocation() {
         return location;
     }
 
-    public void setLocation(Enum location) {
-        this.location = location;
-    }
 
-    public T getType() {
+    public D getType() {
         return type;
-    }
-
-    public void setType(T type) {
-        this.type = type;
     }
 
     public ArrayList<Guest> getOccupants() {
         return occupants;
-    }
-    public int checkOccupants() {
-        return occupants.size();
     }
 
 
@@ -57,7 +38,9 @@ public class Room<D, T> {
         occupants.remove(guest);
     }
 
-
+    public int checkNumberOfOccupants() {
+        return occupants.size();
+    }
 
 
 
