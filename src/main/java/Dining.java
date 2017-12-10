@@ -2,18 +2,19 @@ import java.util.HashMap;
 
 public class Dining extends Room {
 
-    Integer capacity;
+    int capacity;
     HashMap menu;
     Double totalProfit;
     String name;
 
-    public Dining(String designation, Enum type, Location location, Integer capacity) {
+    Dining(Enum type, Location location, String name) {
         super(type, location);
+        this.name = name;
         this.capacity = 50;
         this.menu = new HashMap();
         this.totalProfit = 0.00;
-
     }
+
 
     public Integer getCapacity() {
         return capacity;
@@ -29,5 +30,9 @@ public class Dining extends Room {
 
     public void setMenu(HashMap menu) {
         this.menu = menu;
+    }
+
+    public String getName(){
+        return name;
     }
 }

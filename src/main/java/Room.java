@@ -3,16 +3,18 @@ import java.util.ArrayList;
 public class Room <D> {
 
 
-    String name;
     Location location;
     D type;
     ArrayList<Guest> occupants;
+    int capacity;
+    boolean empty;
 
 
     public Room(D type, Location location) {
         this.type = type;
         this.location = location;
         this.occupants = new ArrayList<>();
+
         }
 
 
@@ -42,6 +44,13 @@ public class Room <D> {
         return occupants.size();
     }
 
+    public boolean roomEmpty() {
+        empty = false;
+        if (checkNumberOfOccupants() == 0) {
+            empty = true;
+        }
+        return empty;
+    }
 
 
     }

@@ -1,12 +1,14 @@
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Hotel {
 
-    String name;
-    Double till;
-    ArrayList<Guest> guests;
-    ArrayList<Room> rooms;
-    Dining restaurant;
+    private String name;
+    private Double till;
+    private ArrayList<Guest> guests;
+    public ArrayList<Room> rooms;
+    private ArrayList<Room> emptyRooms;
+    private Dining restaurant;
 
 
     public Hotel(String name) {
@@ -47,8 +49,11 @@ public class Hotel {
         this.rooms.add(room);
     }
 
+    public void addRestaurant(Dining room){
+        restaurant = room;
+    }
     public String getRestaurant() {
-        return String.valueOf(restaurant.name);
+        return this.restaurant.getName();
     }
 
 
@@ -69,19 +74,29 @@ public class Hotel {
 
     public void checkInGuestBedroom(Accommodation bedroom, Guest guest) {
         if (checkIfRoomFullBedroom(bedroom) == true)
-        {bedroom.occupants.add(guest);}
+        {bedroom.occupants.add(guest);
+        guests.remove(guest);}
     }
 
 
 
     public void checkInGuestConference(Conference conference, Guest guest){
         if (checkIfRoomFullConference(conference) == true)
-        {conference.occupants.add(guest);}
+        {conference.occupants.add(guest);
+        guests.remove(guest);
+        }
     }
 
-//    public ArrayList<Room> emptyRooms(){
-//        return ArrayLis;
-//    }
+
+
+    public ArrayList<Room> emptyRooms(){
+        emptyRooms = new ArrayList<>();
+        for(Room room: this.rooms)
+            if (room.roomEmpty() == true) {
+                emptyRooms.add(room);
+            }
+            return emptyRooms;
+    }
 
 
 }

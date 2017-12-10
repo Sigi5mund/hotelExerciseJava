@@ -15,12 +15,16 @@ public class HotelTest {
     Guest guest2;
     Guest guest3;
     ArrayList<Guest> expected;
+    ArrayList<Room> expectedRooms;
+    Dining restaurant1;
 
 
     @Before
     public void before() {
 
-        hotel = new Hotel ("Aberdour");
+        hotel = new Hotel("Aberdour");
+        restaurant1 = new Dining(DiningType.LUXURY, Location.GROUNDFLOOR, "McTaggart's");
+        hotel.addRestaurant(restaurant1);
         room1 = new Conference("Olympus", ConferenceType.MEETING, Location.GROUNDFLOOR);
         bedroom1 = new Accommodation(5, AccommodationType.DOUBLE, Location.FIRSTFLOOR);
         guest1 = new Guest("Norma", "Stiller", "USA");
@@ -33,14 +37,15 @@ public class HotelTest {
         hotel.addRoom(bedroom1);
         hotel.checkInGuestBedroom(bedroom1, guest1);
         expected = new ArrayList<>();
-//        hotel.checkInGuestBedroom(bedroom1, guest2);
-//        hotel.checkInGuestBedroom(bedroom1, guest3);
+        expectedRooms = new ArrayList<>();
+        hotel.checkInGuestBedroom(bedroom1, guest2);
+
 
     }
 
     @Test
-    public void hotelHasName(){
-        assertEquals("Aberdour", hotel.name);
+    public void hotelHasName() {
+        assertEquals("Aberdour", hotel.getName());
     }
 
     @Test
@@ -50,19 +55,37 @@ public class HotelTest {
 
 
     @Test
-    public void canCheckInGuest(){
-        assertEquals(1, bedroom1.checkNumberOfOccupants());
+    public void canCheckInGuest() {
+        assertEquals(2, bedroom1.checkNumberOfOccupants());
     }
 
     @Test
-    public void checkGuestsAreOnList(){
-        assertEquals(3, hotel.findguests());
+    public void checkGuestsAreOnList() {
+        assertEquals(1, hotel.findguests());
     }
 
     @Test
-    public void checkWhoIsInRoom(){
+    public void checkWhoIsInRoom() {
         expected.add(guest1);
+        expected.add(guest2);
         assertEquals(expected, bedroom1.getOccupants());
     }
 
+    @Test
+    public void roomCapacity() {
+        hotel.checkInGuestBedroom(bedroom1, guest3);
+        assertEquals(2, bedroom1.checkNumberOfOccupants());
+    }
+
+    @Test
+    public void restaurantHasName() {
+        assertEquals("McTaggart's", hotel.getRestaurant());
+
+    }
+
+    @Test
+    public void emptyRooms() {
+        expectedRooms.add(room1);
+        assertEquals(expectedRooms, hotel.emptyRooms());
+    }
 }
