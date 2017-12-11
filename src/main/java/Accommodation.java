@@ -3,10 +3,10 @@ public class Accommodation extends Room{
 
     int capacity;
     double charge;
-    Integer name;
+    int name;
 
 
-    public Accommodation(Integer name, AccommodationType type, Location location) {
+    public Accommodation(int name, AccommodationType type, Location location) {
         super(type, location);
         this.name = name;
         this.capacity = type.capacity();

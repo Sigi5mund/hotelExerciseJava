@@ -8,15 +8,16 @@ import static org.junit.Assert.assertEquals;
 public class HotelTest {
 
 
-    Hotel hotel;
-    Conference room1;
-    Accommodation bedroom1;
-    Guest guest1;
-    Guest guest2;
-    Guest guest3;
-    ArrayList<Guest> expected;
-    ArrayList<Room> expectedRooms;
-    Dining restaurant1;
+    private Hotel hotel;
+    private Conference room1;
+    private Accommodation bedroom1;
+    private Guest guest1;
+    private Guest guest2;
+    private Guest guest3;
+    private ArrayList<Guest> expected;
+    private ArrayList<Room> expectedRooms;
+    private Dining restaurant1;
+    private ArrayList<Guest> dayGuests;
 
 
     @Before
@@ -87,5 +88,20 @@ public class HotelTest {
     public void emptyRooms() {
         expectedRooms.add(room1);
         assertEquals(expectedRooms, hotel.emptyRooms());
+    }
+
+    @Test
+    public void guestCheckInBoolChanged(){
+        assertEquals(true, guest1.getCheckedin());
+    }
+
+    @Test
+    public void checkWhetherGuestsListChanges(){
+        assertEquals(1, hotel.getGuests().size());
+    }
+
+    @Test
+    public void checkRoomList(){
+        assertEquals(2, hotel.getRooms().size());
     }
 }

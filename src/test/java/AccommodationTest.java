@@ -40,4 +40,5 @@ public class AccommodationTest {
         assertEquals(2, bedroom1.getCapacity(),1);
     }
 
+
 }

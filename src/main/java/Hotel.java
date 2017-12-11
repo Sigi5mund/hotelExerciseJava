@@ -1,14 +1,14 @@
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
 
 public class Hotel {
 
     private String name;
     private Double till;
-    private ArrayList<Guest> guests;
+    public ArrayList<Guest> guests;
     public ArrayList<Room> rooms;
-    private ArrayList<Room> emptyRooms;
     private Dining restaurant;
+    public ArrayList<Guest> allGuests;
 
 
     public Hotel(String name) {
@@ -17,13 +17,13 @@ public class Hotel {
         this.guests = new ArrayList<Guest>();
         this.rooms = new  ArrayList<Room>();
         this.restaurant = restaurant;
+        this.allGuests = new ArrayList<Guest>();
 
     }
 
     public String getName() {
         return name;
     }
-
 
     public Double getTill() {
         return till;
@@ -35,6 +35,7 @@ public class Hotel {
 
     public void addGuest(Guest guest) {
         this.guests.add(guest);
+        this.allGuests.add(guest);
     }
 
     public int findguests(){
@@ -75,7 +76,9 @@ public class Hotel {
     public void checkInGuestBedroom(Accommodation bedroom, Guest guest) {
         if (checkIfRoomFullBedroom(bedroom) == true)
         {bedroom.occupants.add(guest);
-        guests.remove(guest);}
+        guests.remove(guest);
+        guest.setCheckedin(true);
+        allGuests.add(guest);}
     }
 
 
@@ -84,13 +87,14 @@ public class Hotel {
         if (checkIfRoomFullConference(conference) == true)
         {conference.occupants.add(guest);
         guests.remove(guest);
+        allGuests.add(guest);
         }
     }
 
 
 
     public ArrayList<Room> emptyRooms(){
-        emptyRooms = new ArrayList<>();
+        ArrayList<Room> emptyRooms = new ArrayList<>();
         for(Room room: this.rooms)
             if (room.roomEmpty() == true) {
                 emptyRooms.add(room);
